@@ -22,11 +22,10 @@ class Stations:
 
         station_dimension = station_variable.dimensions[0]
 
-        # todo make this a bit smarter, right now variables like station_name would be forgotten
         self.__attribute_variables = {}
         for variable_name in dataset.variables:
             variable = dataset.variables[variable_name]
-            if variable != station_variable and variable.dimensions == (station_dimension,):
+            if variable.dimensions == (station_dimension,):
                 self.__attribute_variables[variable_name] = variable
 
         self.__attributes = OrderedDict()

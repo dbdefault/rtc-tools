@@ -502,6 +502,16 @@ class TestExportDataset(TestCase):
         self.check_attributes("lat", _attributes, _attribute_values_lat)
         self.check_attributes("lon", _attributes, _attribute_values_lon)
 
+        # station_variable itself is included as an attribute variable
+        # (fixes: variables like station_name would be forgotten)
+        station_variable_name = self.import_dataset.station_variable.name
+        self.assertIn(
+            station_variable_name,
+            self.dataset.variables,
+            f"Station variable '{station_variable_name}' is missing from exported file, "
+            "but should be included as station metadata.",
+        )
+
         name_loc1 = b""
         for char in self.dataset.variables["station_id"][0].data:
             name_loc1 += char
