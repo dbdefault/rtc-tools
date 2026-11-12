@@ -569,7 +569,11 @@ class TestExportDataset(TestCase):
             * 6,
         )
 
-        # TODO: check fill_value
+        for _variable in unique_parameter_ids:
+            self.assertTrue(
+                np.isnan(self.dataset.variables[_variable].get_fill_value()),
+                f"Variable {_variable} does not have the expected fill value NaN."
+            )
 
     def test_create_variables_with_ensemble(self):
         # TODO: rewrite test to be independent of succes of reading a netcdf file.
@@ -613,7 +617,11 @@ class TestExportDataset(TestCase):
             * 7,
         )
 
-        # TODO: check fill_value
+        for _variable in unique_parameter_ids:
+            self.assertTrue(
+                np.isnan(self.dataset.variables[_variable].get_fill_value()),
+                f"Variable {_variable} does not have the expected fill value NaN."
+            )
 
     def test_write_output_values(self):
         files = (
