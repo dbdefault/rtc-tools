@@ -19,7 +19,7 @@ The Model
 .. note::
 
     This example uses the same hydraulic model as the basic example. For a
-    detalied explaination of the hydraulic model, see :doc:`basic`.
+    detailed explanation of the hydraulic model, see :doc:`basic`.
 
 
 In OpenModelica Connection Editor, the model looks like this:
